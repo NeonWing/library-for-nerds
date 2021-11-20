@@ -103,6 +103,50 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-guts {
+    position: relative;
+    width: 30%;
+    height: 60%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-guts .close {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    align-self: flex-end;
+    margin-right: 15px;
+    margin-top: 15px;
+    opacity: 0.6;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+.modal.closed {
+    display: none;
+}
+
 /* Gradient Classes */
 
 .hot-pink-gradient {
