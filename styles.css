@@ -34,18 +34,22 @@ body {
     border: none;
     padding: 12px 24px;
     font-size: 24px;
-    border-radius: 16px;
-    color: white;
+    border-radius: 32px;
     font-family: 'Bebas Neue', Verdana, arial, sans-serif;
-    background-image: linear-gradient(to bottom right, #40916c, #95d5b2);
+    border: 2px solid #40916c;
+    color: #40916c;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .add:hover {
-    filter: brightness(85%);
+    background-image: linear-gradient(to bottom right, #40916c, #95d5b2);
+    color: white;
+    border: none;
 }
 
 .add:active {
-    filter: brightness(75%);
+    filter: brightness(85%);
 }
 
 .footer {
