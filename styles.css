@@ -45,11 +45,46 @@ body {
 .add:hover {
     background-image: linear-gradient(to bottom right, #40916c, #95d5b2);
     color: white;
-    border: none;
+    border: 2px solid transparent;
 }
 
 .add:active {
     filter: brightness(85%);
+}
+
+.cards {
+    margin-top: 40px;;
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+    justify-content: space-between;
+}
+
+.card {
+    width: 200px;
+    height: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.hot-pink-gradient {
+    background-image: linear-gradient(to bottom right, #c9184a, #ff8fa3);
+}
+
+.ocean-gradient {
+    background-image: linear-gradient(to bottom right, #5390d9 , #80ffdb);
+}
+
+.purple-pink-gradient {
+    background-image: linear-gradient(to bottom right, #F72585, #480CA8);
+}
+
+.fiery-gradient {
+    background-image: linear-gradient(to bottom right, #d00000, #ffba08);
 }
 
 .footer {
