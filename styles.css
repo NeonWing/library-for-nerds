@@ -70,6 +70,27 @@ body {
     font-size: 32px;
     margin: 10px;
     color: white;
+    gap: 12px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex: 2;
+}
+
+.card .options {
+    margin-bottom: 5px;
+    opacity: 0.6;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.options:hover {
+    opacity: 1;
 }
 
 .footer {
