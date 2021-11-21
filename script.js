@@ -1,11 +1,12 @@
 let myLibrary = [];
 
-function Book(title, author, pages, hasRead, background) {
+function Book(title, author, pages, hasRead, background, index) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.hasRead = hasRead;
     this.background = background;
+    this.index = index;
 }
 
 //Modal Handling
@@ -102,12 +103,12 @@ function generateGrayBackground() {
 
 function addToLibrary() {
     let book = new Book(titleInput.value, authorInput.value, pagesInput.value, 
-        hasRead.checked, selectedBackground);
+        hasRead.checked, selectedBackground, myLibrary.length);
     myLibrary.push(book);
 
     console.log(`User submitted: ${book.title} by ${book.author}, 
     it is ${book.pages} pages long and read status is ${book.hasRead}. They selected 
-    the ${book.background} background`);
+    the ${book.background} background. It's index is ${book.index}`);
 
     generateBookCard(book);
 }
@@ -121,8 +122,9 @@ function generateBookCard(book) {
     const pageSpan = document.createElement("span");
     const optionDiv = document.createElement("div");
     const editSpan = document.createElement("span");
+    const removeSpan = document.createElement("span");
 
-    //Add Classes
+    //Add Classes and Attributes
     card.classList.add("card", book.background);
     cardContent.classList.add("card-content");
     titleSpan.classList.add("title");
@@ -130,16 +132,22 @@ function generateBookCard(book) {
     pageSpan.classList.add("pages");
     optionDiv.classList.add("options");
     editSpan.classList.add("edit");
+    editSpan.addEventListener('click', (e) => {
+        editModal(e.target);
+    });
+    removeSpan.classList.add("remove");
+    card.setAttribute("data-index", book.index)
 
     //Add Text
     titleSpan.textContent = book.title;
     authorSpan.textContent = book.author;
     pageSpan.textContent = `${book.pages} Pages`;
     editSpan.textContent = "Edit";
+    removeSpan.textContent = "Remove";
 
     //Append All Elements
     cardContent.append(titleSpan, authorSpan, pageSpan);
-    optionDiv.appendChild(editSpan);
+    optionDiv.append(editSpan, removeSpan);
     card.append(cardContent, optionDiv);
     cards.appendChild(card);
 }
@@ -151,3 +159,24 @@ function clearInputFields() {
     hasRead.checked = false;
 }
 
+//Remove Function
+const removeButton = document.querySelector(".remove");
+removeButton.addEventListener('click', () => {
+    removeButton.parentElement.parentElement.remove();
+});
+
+//Edit Button
+function editModal(e) {
+    modal.classList.toggle('closed');
+    let indexValue = e.parentElement.parentElement.dataset.index;
+    let bookObj = myLibrary[indexValue];
+    titleInput.value = bookObj.title;
+    authorInput.value = bookObj.author;
+    pagesInput.value = bookObj.pages;
+    (bookObj.hasRead) ? hasRead.checked = true : hasRead.checked = false;
+    clearBackgrounds();
+    if(bookObj.hasRead) {
+        generateBackgrounds();
+        document.getElementById(bookObj.background).classList.toggle("selected");
+    }
+}

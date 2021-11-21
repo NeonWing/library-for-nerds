@@ -85,13 +85,23 @@ body {
 
 .card .options {
     margin-bottom: 5px;
+}
+.edit, .remove {
     opacity: 0.6;
     transition: 0.3s;
     cursor: pointer;
 }
 
-.options:hover {
+.edit:hover, .remove:hover{
     opacity: 1;
+}
+
+.edit{
+    margin-right: 5px;
+}
+
+.remove {
+    margin-left: 5px;
 }
 
 .footer {
