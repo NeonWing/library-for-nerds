@@ -15,7 +15,7 @@
     <div class="content">
         <button class="add">ADD</button>
         <div class="cards">
-            <div class="card hot-pink-gradient">
+            <!-- <div class="card hot-pink-gradient">
                 <div class="card-content">
                     <span class="title">Title</span>
                     <span class="author">Author</span>
@@ -24,57 +24,7 @@
                 <div class="options">
                     <span class="edit">Edit</span>
                 </div>
-            </div>
-            <div class="card fiery-gradient">
-                <div class="card-content">
-                    <span class="title">Title</span>
-                    <span class="author">Author</span>
-                    <span class="pages">69 Pages</span>
-                </div>
-                <div class="options">
-                    <span class="edit">Edit</span>
-                </div>
-            </div>
-            <div class="card ocean-gradient">
-                <div class="card-content">
-                    <span class="title">Title</span>
-                    <span class="author">Author</span>
-                    <span class="pages">69 Pages</span>
-                </div>
-                <div class="options">
-                    <span class="edit">Edit</span>
-                </div>
-            </div>
-            <div class="card purple-pink-gradient">
-                <div class="card-content">
-                    <span class="title">Title</span>
-                    <span class="author">Author</span>
-                    <span class="pages">69 Pages</span>
-                </div>
-                <div class="options">
-                    <span class="edit">Edit</span>
-                </div>
-            </div>
-            <div class="card green-gradient">
-                <div class="card-content">
-                    <span class="title">Title</span>
-                    <span class="author">Author</span>
-                    <span class="pages">69 Pages</span>
-                </div>
-                <div class="options">
-                    <span class="edit">Edit</span>
-                </div>
-            </div>
-            <div class="card pastel-gradient">
-                <div class="card-content">
-                    <span class="title">Title</span>
-                    <span class="author">Author</span>
-                    <span class="pages">69 Pages</span>
-                </div>
-                <div class="options">
-                    <span class="edit">Edit</span>
-                </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -88,28 +38,28 @@
                 <span class="info-header">Book Info</span>
 
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title">
+                <input type="text" id="title" name="title" autocomplete="off">
                 <label for="author">Author</label>
-                <input type="author" id="author" name="author">
+                <input type="author" id="author" name="author" autocomplete="off">
                 <label for="pages">Pages</label>
-                <input type="pages" id="pages" name="pages">
+                <input type="pages" id="pages" name="pages" autocomplete="off"> 
 
                 <div class="has-read">
                     Has Read
                     <label class="switch">
-                        <input type="checkbox">
+                        <input type="checkbox" id="hasRead">
                         <span class="slider round"></span>
                     </label>
                 </div>
 
                 <span class="background-text">Background</span>
                 <div class="backgrounds">
-                    <div class="hot-pink-gradient box"></div>
-                    <div class="fiery-gradient box"></div>
-                    <div class="ocean-gradient box"></div>
-                    <div class="purple-pink-gradient box"></div>
-                    <div class="green-gradient box"></div>
-                    <div class="pastel-gradient box"></div>
+                    <div class="hot-pink-gradient box" id="hot-pink-gradient"></div>
+                    <div class="fiery-gradient box" id="fiery-gradient"></div>
+                    <div class="ocean-gradient box" id="ocean-gradient"></div>
+                    <div class="purple-pink-gradient box" id="purple-pink-gradient"></div>
+                    <div class="green-gradient box" id="green-gradient"></div>
+                    <div class="pastel-gradient box" id="pastel-gradient"></div>
                 </div>
 
                 <button class="submit">Submit</button>
