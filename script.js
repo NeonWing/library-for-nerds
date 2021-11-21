@@ -295,9 +295,7 @@ function closePopUp() {
 }
 
 function cleanUpTransition() {
-    console.log(`In clean up - ${popup.classList}`)
     if(popup.classList.contains("anim-slide-out")) {
-        console.log("In if statement")
         popup.classList.remove("anim-slide-in");
         popup.classList.toggle("closed");
         popup.classList.remove("anim-slide-out");
