@@ -317,3 +317,7 @@ body {
 .hot-pink-gradient {
     background-image: linear-gradient(to bottom right, #c9184a, #ff8fa3);
 }
+
+.gray-gradient {
+    background-image: linear-gradient(to bottom right, #495057, #adb5bd);
+}

@@ -22,19 +22,23 @@ addButton.addEventListener("click", () => {
 });
 
 //Background Color Select
-const boxes = document.querySelectorAll(".box");
-let selectedBackground;
+let boxes = document.querySelectorAll(".box");
+let selectedBackground = "gray-gradient";
 boxes.forEach((box) => {
+    addBoxListener(box);
+});
+
+function addBoxListener(box) {
     box.addEventListener('click', () => {
         deselectBoxes(box);
         box.classList.toggle("selected");
         selectedBackground = box.id;
     });
-});
+}
 
 function deselectBoxes(selectedBox) {
-    boxes.forEach((box) => {
-        if(box.classList.contains("selected") && box != selectedBox) {
+    boxes = document.querySelectorAll(".box").forEach((box) => {
+        if(box.classList.contains("selected") && box.id != selectedBox.id) {
             box.classList.remove("selected")
         }
     });
@@ -47,13 +51,54 @@ const authorInput = document.getElementById("author");
 const pagesInput = document.getElementById("pages");
 const hasRead = document.getElementById("hasRead");
 const cards = document.querySelector(".cards");
+const backgrounds = document.querySelector(".backgrounds");
+
+hasRead.checked = false;
 
 submitButton.addEventListener('click', () => {
     addToLibrary();
     clearInputFields();
 
+    clearBackgrounds();
+    generateGrayBackground();
     modal.classList.toggle("closed");
 });
+
+hasRead.addEventListener('change', () => {
+    clearBackgrounds();
+    if(hasRead.checked === true) {
+        generateBackgrounds();
+    } else {
+        generateGrayBackground();
+    }
+});
+
+function generateBackgrounds() {
+    const gradients = ["hot-pink-gradient","fiery-gradient", "ocean-gradient", 
+    "purple-pink-gradient", "green-gradient", "pastel-gradient"];
+
+    for(let i = 0; i < gradients.length; i++){
+        let div = document.createElement("div");
+        div.classList.add(gradients[i], "box");
+        div.id = gradients[i];
+        backgrounds.appendChild(div);
+        addBoxListener(div);
+    }
+}
+
+function clearBackgrounds() {
+    while (backgrounds.firstChild) {
+        backgrounds.removeChild(backgrounds.lastChild);
+    }
+}
+
+function generateGrayBackground() {
+    let div = document.createElement("div");
+    div.classList.add("gray-gradient", "box", "selected");
+    div.id = "gray-gradient";
+    backgrounds.appendChild(div);
+    selectedBackground = "gray-gradient";
+}
 
 function addToLibrary() {
     let book = new Book(titleInput.value, authorInput.value, pagesInput.value, 
