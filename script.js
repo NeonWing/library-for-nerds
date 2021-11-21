@@ -71,8 +71,6 @@ submitButton.addEventListener('click', () => {
         clearBackgrounds();
         generateGrayBackground();
         modal.classList.toggle("closed");
-    } else {
-        alert("Bitch do it Right");
     }
 });
 
@@ -226,7 +224,6 @@ function editModal(e) {
 function updateCard() {
     //Validate Form
     if(!validateForm()) {
-        alert("Please fill out the form correctly");
         return;
     }
 
@@ -260,14 +257,49 @@ function updateCard() {
 function validateForm() {
     //Check for letters in Pages
     let pattern = /^[0-9]+$/;
-    if(!pattern.test(pagesInput.value)) return false;
-    
-    //Make Sure all options are filled
-    if(titleInput.value === "" || author.value === "" || pagesInput.value === "") {
+    if(!pattern.test(pagesInput.value)) {
+        showPopUp();
         return false;
     }
-    if(selectedBackground === "") return false;
+
+    //Make Sure all options are filled
+    if(titleInput.value === "" || author.value === "" || pagesInput.value === "") {
+        showPopUp();
+        return false;
+    }
+
+    if(selectedBackground === "") {
+        showPopUp();
+        return false;
+    }
 
     //If function made it here form is filled out and valid
     return true;
+}
+
+//Error Popup 
+const popup = document.querySelector(".error-popup");
+popup.addEventListener("transitionend", cleanUpTransition); 
+
+function showPopUp() {
+    popup.classList.toggle("closed");
+    popup.classList.add("anim-slide-in");
+}
+
+const closePopupBtn = document.querySelector(".close-popup");
+closePopupBtn.addEventListener("click", closePopUp);
+
+function closePopUp() {
+    popup.classList.remove("anim-slide-in");
+    popup.classList.add("anim-slide-out");
+}
+
+function cleanUpTransition() {
+    console.log(`In clean up - ${popup.classList}`)
+    if(popup.classList.contains("anim-slide-out")) {
+        console.log("In if statement")
+        popup.classList.remove("anim-slide-in");
+        popup.classList.toggle("closed");
+        popup.classList.remove("anim-slide-out");
+    }
 }
