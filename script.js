@@ -199,6 +199,7 @@ function editModal(e) {
     } else {
         generateGrayBackground();
     }
+    selectedBackground = bookObj.background;
     submitButton.classList.toggle("closed");
     updateButton.classList.toggle("closed");
 }
