@@ -64,12 +64,16 @@ const backgrounds = document.querySelector(".backgrounds");
 hasRead.checked = false;
 
 submitButton.addEventListener('click', () => {
-    addToLibrary();
-    clearInputFields();
+    if(validateForm()) {
+        addToLibrary();
+        clearInputFields();
 
-    clearBackgrounds();
-    generateGrayBackground();
-    modal.classList.toggle("closed");
+        clearBackgrounds();
+        generateGrayBackground();
+        modal.classList.toggle("closed");
+    } else {
+        alert("Bitch do it Right");
+    }
 });
 
 hasRead.addEventListener('change', () => {
@@ -92,6 +96,7 @@ function generateBackgrounds() {
         backgrounds.appendChild(div);
         addBoxListener(div);
     }
+    selectedBackground = "";
 }
 
 function clearBackgrounds() {
@@ -219,6 +224,12 @@ function editModal(e) {
 }
 
 function updateCard() {
+    //Validate Form
+    if(!validateForm()) {
+        alert("Please fill out the form correctly");
+        return;
+    }
+
     //Update Object
     let indexValue = selectedCard.dataset.index;
     let bookObj = myLibrary[indexValue];
@@ -243,4 +254,20 @@ function updateCard() {
     clearBackgrounds();
     generateGrayBackground();
     selectedBackground = "gray-gradient";
+}
+
+//Form Validation
+function validateForm() {
+    //Check for letters in Pages
+    let pattern = /^[0-9]+$/;
+    if(!pattern.test(pagesInput.value)) return false;
+    
+    //Make Sure all options are filled
+    if(titleInput.value === "" || author.value === "" || pagesInput.value === "") {
+        return false;
+    }
+    if(selectedBackground === "") return false;
+
+    //If function made it here form is filled out and valid
+    return true;
 }
