@@ -16,6 +16,13 @@ const addButton = document.querySelector(".add");
 
 modalClose.addEventListener("click", () => {
     modal.classList.toggle("closed");
+    clearInputFields();
+    clearBackgrounds();
+    generateGrayBackground();
+    if(!updateButton.classList.contains("closed")) {
+        updateButton.classList.toggle("closed");
+        submitButton.classList.toggle("closed");
+    }
 });
 
 addButton.addEventListener("click", () => {
@@ -166,10 +173,17 @@ removeButton.addEventListener('click', () => {
 });
 
 //Edit Button
+const updateButton = document.querySelector(".update");
+updateButton.addEventListener('click', updateCard);
+let selectedCard;
+
 function editModal(e) {
     modal.classList.toggle('closed');
+    //Access Object
     let indexValue = e.parentElement.parentElement.dataset.index;
+    selectedCard = e.parentElement.parentElement;
     let bookObj = myLibrary[indexValue];
+    //Set Up Modal
     titleInput.value = bookObj.title;
     authorInput.value = bookObj.author;
     pagesInput.value = bookObj.pages;
@@ -178,5 +192,36 @@ function editModal(e) {
     if(bookObj.hasRead) {
         generateBackgrounds();
         document.getElementById(bookObj.background).classList.toggle("selected");
+    } else {
+        generateGrayBackground();
     }
+    submitButton.classList.toggle("closed");
+    updateButton.classList.toggle("closed");
+}
+
+function updateCard() {
+    //Update Object
+    let indexValue = selectedCard.dataset.index;
+    let bookObj = myLibrary[indexValue];
+    bookObj.title = titleInput.value;
+    bookObj.author = authorInput.value;
+    bookObj.pages = pagesInput.value;
+    bookObj.hasRead = hasRead.checked;
+    bookObj.background = selectedBackground;
+
+    //Update Card
+    selectedCard.querySelector(".title").textContent = bookObj.title;
+    selectedCard.querySelector(".author").textContent = bookObj.author;
+    selectedCard.querySelector(".pages").textContent = `${bookObj.pages} Pages`;
+    selectedCard.className = "";
+    selectedCard.classList.add("card", bookObj.background);
+
+    //Clean Up
+    submitButton.classList.toggle("closed");
+    updateButton.classList.toggle("closed");
+    modal.classList.toggle("closed");
+    clearInputFields();
+    clearBackgrounds();
+    generateGrayBackground();
+    selectedBackground = "gray-gradient";
 }

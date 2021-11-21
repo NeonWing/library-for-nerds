@@ -159,7 +159,7 @@ body {
     opacity: 1;
 }
 
-.modal.closed {
+.closed {
     display: none;
 }
 
@@ -217,7 +217,7 @@ body {
     cursor: pointer;
 }
 
-.modal-content .submit {
+.modal-content .modal-button {
     margin-top: 12px;
     padding: 5px 10px;
     font-size: 18px;
@@ -231,6 +231,11 @@ body {
 .submit:hover {
     color: #52b788;
     border-color:#52b788;
+}
+
+.update:hover {
+    color: #90e0ef;
+    border-color:#90e0ef;
 }
 
 .selected {
