@@ -24,3 +24,20 @@ modalClose.addEventListener("click", () => {
 addButton.addEventListener("click", () => {
     modal.classList.toggle("closed");
 });
+
+//Background Color Select
+const boxes = document.querySelectorAll(".box");
+boxes.forEach((box) => {
+    box.addEventListener('click', () => {
+        deselectBoxes(box);
+        box.classList.toggle("selected");
+    });
+});
+
+function deselectBoxes(selectedBox) {
+    boxes.forEach((box) => {
+        if(box.classList.contains("selected") && box != selectedBox) {
+            box.classList.remove("selected")
+        }
+    });
+}
