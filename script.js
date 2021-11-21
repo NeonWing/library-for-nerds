@@ -143,6 +143,9 @@ function generateBookCard(book) {
         editModal(e.target);
     });
     removeSpan.classList.add("remove");
+    removeSpan.addEventListener("click", (e) => {
+        remove(e.target);
+    });
     card.setAttribute("data-index", book.index)
 
     //Add Text
@@ -167,10 +170,11 @@ function clearInputFields() {
 }
 
 //Remove Function
-const removeButton = document.querySelector(".remove");
-removeButton.addEventListener('click', () => {
-    removeButton.parentElement.parentElement.remove();
-});
+function remove(removeButton) {
+        let index = removeButton.parentElement.parentElement.dataset.index;
+        myLibrary.splice(index, 1);
+        removeButton.parentElement.parentElement.remove();
+}
 
 //Edit Button
 const updateButton = document.querySelector(".update");
