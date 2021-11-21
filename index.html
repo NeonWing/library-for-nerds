@@ -77,12 +77,41 @@
             </div>
         </div>
     </div>
+
     <div class="footer">= Crafted by Wing =</div>
 
-    <div class="modal closed" id="modal">
-        <div class="modal-guts purple-pink-gradient">
+    <!-- MODAL SECTION -->
+    <div class="modal " id="modal">
+        <div class="modal-guts">
             <div class="close">X</div>
-            <div class="modal-content"></div>
+            <div class="modal-content">
+                <span class="info-header">Book Info</span>
+
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+                <label for="author">Author</label>
+                <input type="author" id="author" name="author">
+                <label for="pages">Pages</label>
+                <input type="pages" id="pages" name="pages">
+
+                <div class="has-read">
+                    Has Read
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <span class="background-text">Background</span>
+                <div class="backgrounds">
+                    <div class="hot-pink-gradient box"></div>
+                    <div class="fiery-gradient box"></div>
+                    <div class="purple-pink-gradient box"></div>
+                    <div class="ocean-gradient box"></div>
+                    <div class="green-gradient box"></div>
+                    <div class="pastel-gradient box"></div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

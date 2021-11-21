@@ -28,6 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10px;
 }
 
 .content .add {
@@ -110,7 +111,6 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,6 +125,12 @@ body {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    background-color: #161a1d;
+    border-style: solid;
+    border-width: 5px;
+    border-image:  linear-gradient(to bottom right, #F72585, #480CA8) 1;
+    overflow-y: auto !important;
+    overflow: auto;
 }
 
 .modal-guts .close {
@@ -146,6 +152,117 @@ body {
 .modal.closed {
     display: none;
 }
+
+/* Modal Content */
+.modal-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 26px;
+    color: white;
+    gap: 8px;
+}
+
+.modal-content .info-header {
+    font-size: 36px;
+}
+
+.modal-content input {
+    -webkit-appearance: none;
+    border: 3px solid #ccc;
+    transition: 0.25s;
+    padding: 5px;
+    height: 20px;
+    width: 200px;
+    text-align: center;
+}
+
+.modal-content #pages {
+    width: 75px;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border: 3px solid #4361ee;
+}
+
+.has-read {
+    margin-top: 8px;
+}
+
+.backgrounds {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.box {
+    height: 40px;
+    width: 50px;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #4361ee;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #4361ee;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
 
 /* Gradient Classes */
 
