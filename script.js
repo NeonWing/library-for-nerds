@@ -174,6 +174,20 @@ function remove(removeButton) {
         let index = removeButton.parentElement.parentElement.dataset.index;
         myLibrary.splice(index, 1);
         removeButton.parentElement.parentElement.remove();
+        updateIndexes();
+}
+
+function updateIndexes() {
+    //Update Array
+    for(let i = 0; i < myLibrary.length; i++) {
+        myLibrary[i].index = i;
+    }
+
+    //Update Elements
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card, index) => {
+        card.dataset.index = index;
+    });
 }
 
 //Edit Button
